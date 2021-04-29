@@ -13,7 +13,7 @@ void gamertime(SDL_surface* ecran)
 
 
     // Chargement sprite
-    mur = IMG_Load("mur.jpg");
+    mur = IMG_Load("mur.png");
     caisse = IMG_Load("caisse.jpg");
     caisseOK = IMG_Load("caisse_ok.jpg");
     objectif = IMG_Load("objectif.png");
@@ -23,4 +23,16 @@ void gamertime(SDL_surface* ecran)
     mario[DROITE] = IMG_Load("mario_droite.gif");
 
     marioActuel = mario[BAS]; // Mario sera vers le bas par défaut 
+
+    for (i = 0; i < NB_BLOCS_LARGEUR; i++) //oncherche la position de mario sur la map
+    {
+        for (j = 0; j < NB_BLOCS_HAUTEUR; j++)
+        {
+            if ( carte[i][j]== marioactuel)
+            {
+                positionJoueur.x = i;
+                positionJoueur.y = j;
+            }
+        }
+    }
 }
