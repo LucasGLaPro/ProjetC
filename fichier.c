@@ -42,7 +42,7 @@ int SaveNivau(int niveau[][NB_BLOCS_HAUTEUR])
     FILE* fichier = 0;
     int i = 0, j = 0;
 
-    fichier = fopen("niveaux.lvl", "r");
+    fichier = fopen("niveaux.lvl", "w");
     if (fichier == 0)
         return 0;
 
@@ -50,7 +50,7 @@ int SaveNivau(int niveau[][NB_BLOCS_HAUTEUR])
     {
         for (j = 0; j < NB_BLOCS_HAUTEUR; j++)
         {
-
+            fprintf(fichier,"%d",niveau[i][j]);
         }
     }
 }
