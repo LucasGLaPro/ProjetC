@@ -16,6 +16,14 @@ int main()
     sprite.setTexture(Texture);
 
 
+    sf::Texture mario;
+    if (!(mario.loadFromFile("mario8bit.png")))
+        std::cout << "Cannot load image";   //Load Image
+
+
+    sf::Sprite sprite2;
+    sprite2.setTexture(mario);
+
     while (window.isOpen())
     {
 
@@ -31,7 +39,11 @@ int main()
 
         window.clear();
         window.draw(sprite);
+        window.draw(sprite2);
+        sprite2.setPosition(190, 30);
+
         window.display();
+
     }
 
 
