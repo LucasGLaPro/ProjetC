@@ -5,17 +5,15 @@
 int main()
 {
 
-    sf::RenderWindow window(sf::VideoMode(1000, 500), "SFML ");
+    sf::RenderWindow window(sf::VideoMode(407, 406), "SFML ");
 
-    sf::Image image;
-    if (!(image.loadFromFile("mario3.png")))
+    sf::Texture Texture;
+    if (!(Texture.loadFromFile("mario.jpg")))
         std::cout << "Cannot load image";   //Load Image
 
-    sf::Texture texture;
-    texture.loadFromImage(image);  //Load Texture from image
 
     sf::Sprite sprite;
-    sprite.setTexture(texture);
+    sprite.setTexture(Texture);
 
 
     while (window.isOpen())
@@ -30,12 +28,6 @@ int main()
 
         }//Event handling done
 
-
-        for (int i = 0; i < 1280; i++)
-        {
-            for (int j = 0; j < 720; j++)
-                image.setPixel(i, j, sf::Color::Black);
-        }
 
         window.clear();
         window.draw(sprite);
