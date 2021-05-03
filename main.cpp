@@ -5,7 +5,7 @@
 int main()
 {
 
-    sf::RenderWindow window(sf::VideoMode(407, 406), "SFML ");
+    sf::RenderWindow window(sf::VideoMode(407, 406), "Mario SOKOBAN Lucas et Gregory ");
 
     sf::Texture Texture;
     if (!(Texture.loadFromFile("mario.jpg")))
@@ -41,7 +41,6 @@ int main()
         window.draw(sprite);
         window.draw(sprite2);
         sprite2.setPosition(190, 30);
-
         window.display();
 
     }
