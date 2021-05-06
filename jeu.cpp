@@ -10,7 +10,7 @@
 #include "jeu.h"
 
 
-void jouer(sf::RenderWindow window)
+void jouer(sf::RenderWindow *window)
 {
     sf::RenderWindow window{ sf::VideoMode(800, 600), "Ecran" };
 
@@ -73,7 +73,7 @@ void jouer(sf::RenderWindow window)
         exit(EXIT_FAILURE);
 
 
-    for (i = 0; i < NB_BLOCS_LARGEUR; i++) //oncherche la position de mario sur la map
+    for (i = 0; i < NB_BLOCS_LARGEUR; i++) //on cherche la position de mario sur la map
     {
         for (j = 0; j < NB_BLOCS_HAUTEUR; j++)
         {

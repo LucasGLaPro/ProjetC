@@ -1,78 +1,64 @@
+
 #include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 #include <iostream>
+#include <fstream>
+
+
+#include "constante.h"
+#include "jeu.h"
+#include "fichier.h"
+
+
 
 
 int main()
 {
-    int x = 190;
-    int y = 30;
-    sf::RenderWindow window(sf::VideoMode(407, 406), "Mario SOKOBAN Lucas et Gregory ");
+	using namespace std;
 
-    sf::Texture Texture;
-    if (!(Texture.loadFromFile("mario.jpg")))
-        std::cout << "Cannot load image";   //Load Image
+	sf::RenderWindow window(sf::VideoMode(LARGEUR_FENETRE, HAUTEUR_FENETRE), "Mario Sokoban");
+	
 
+	sf::Texture texture;
+	if (!texture.loadFromFile("menu.jpg"))
+	{
+		cout << "Image du menu principale non chargé";
+	}
 
-    sf::Sprite sprite;
-    sprite.setTexture(Texture);
+	sf::Sprite sprite;
+	sprite.setTexture(texture);
 
+	
+	while (window.isOpen())
+	{
 
-    sf::Texture mario;
-    if (!(mario.loadFromFile("mario8bit.png")))
-        std::cout << "Cannot load image";   //Load Image
+		//Event pour naviguer entre les options
+		sf::Event event;
 
-
-    sf::Sprite sprite2;
-    sprite2.setTexture(mario);
-
-    while (window.isOpen())
-    {
-
-        sf::Event event;
-
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-
-            if (event.type == sf::Event::KeyPressed)
-            {
-                if (event.key.code == sf::Keyboard::Escape)
-                {
-                    window.close();
-                }
-                if (event.key.code == sf::Keyboard::Q || event.key.code == sf::Keyboard::Num1)
-                {
-
-                    sprite2.setPosition(x = x-10, y);
-                }
-                if (event.key.code == sf::Keyboard::D || event.key.code == sf::Keyboard::Num1)
-                {
-
-                    sprite2.setPosition(x = x + 10, y);
-                }
-                if (event.key.code == sf::Keyboard::S || event.key.code == sf::Keyboard::Num1)
-                {
-
-                    sprite2.setPosition(x, y=y+10);
-                }
-                if (event.key.code == sf::Keyboard::Z || event.key.code == sf::Keyboard::Num1)
-                {
-
-                    sprite2.setPosition(x, y=y-10);
-                }
-            }
-        }//Event handling done
-
-
-        window.clear();
-        window.draw(sprite);
-        window.draw(sprite2);
-        sprite2.setPosition(x, y);
-        window.display();
-
-    }
-
-
-    return 0;
+		
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+			{
+				window.close();
+			}
+			
+			if (event.type == sf::Event::KeyPressed)
+			{
+				if (event.key.code == sf::Keyboard::Escape)
+				{
+					window.close();
+				}
+				if (event.key.code == sf::Keyboard::Numpad1 || event.key.code == sf::Keyboard::Num1) 
+				{
+					
+					jouer(&window);
+				}
+				
+			}
+		}
+		window.draw(sprite);
+		window.display();
+	}
+	return 0;
 }

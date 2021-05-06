@@ -1,7 +1,7 @@
 #ifndef DEF_JEU
 #define DEF_JEU
 
-void jouer(sf::RenderWindow window);
+void jouer(sf::RenderWindow *window);
 
 
 
